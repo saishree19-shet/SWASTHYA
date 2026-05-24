@@ -55,7 +55,7 @@ export default function DoctorBooking() {
       <header className="app-header" style={{ marginBottom: '24px' }}>
         <div className="header-title" style={{ fontSize: '18px', gap: '16px' }}>
           <ArrowLeft size={24} onClick={() => navigate(-1)} style={{ cursor: 'pointer' }} />
-          SheCare AI
+          Swasthya
         </div>
         <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
           <Bell size={20} color="var(--primary)" />

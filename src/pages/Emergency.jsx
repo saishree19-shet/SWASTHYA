@@ -41,7 +41,7 @@ export default function Emergency() {
       <header className="app-header">
         <div className="header-title">
           <img src={photoUrl} alt="Profile" className="avatar" referrerPolicy="no-referrer" />
-          SheCare AI
+          Swasthya
         </div>
         <button className="icon-btn">
           <Bell size={24} />
@@ -162,7 +162,7 @@ export default function Emergency() {
           <Sparkles size={16} />
         </div>
         <div>
-          <h3 style={{ fontSize: '12px', marginBottom: '4px' }}>SheCare AI Safety Tip</h3>
+          <h3 style={{ fontSize: '12px', marginBottom: '4px' }}>Swasthya Safety Tip</h3>
           <p style={{ fontSize: '12px', color: 'var(--text-dark)', lineHeight: '1.5', margin: 0 }}>
             I've shared your medical ID including your blood type and allergies with local responders to ensure they are prepared.
           </p>

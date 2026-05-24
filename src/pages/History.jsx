@@ -16,7 +16,7 @@ export default function History() {
       <header className="app-header">
         <div className="header-title">
           <img src="https://i.pravatar.cc/100?img=5" alt="Profile" className="avatar" />
-          SheCare AI
+          Swasthya
         </div>
         <button className="icon-btn">
           <Bell size={24} />

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Bell, X, Sparkles, Image as ImageIcon, Smile, List, ShieldCheck } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { createPost } from '../services/communityService';
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -14,6 +16,35 @@ export default function CreatePost() {
   const [activeCircle, setActiveCircle] = useState('Mental Wellness');
   const [isAnonymous, setIsAnonymous] = useState(true);
   const [postText, setPostText] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { currentUser } = useAuth();
+
+  const handlePost = async () => {
+    if (!postText.trim()) return;
+    
+    setIsSubmitting(true);
+    try {
+      const authorId = currentUser ? currentUser.uid : 'anonymous_user';
+      const anonName = isAnonymous 
+        ? `Anonymous ${Math.random().toString(36).substring(2, 6)}`
+        : (currentUser?.displayName || 'Member');
+        
+      await createPost(
+        authorId, 
+        anonName, 
+        "", // no title needed
+        postText, 
+        activeCircle
+      );
+      
+      navigate('/community');
+    } catch (error) {
+      console.error(error);
+      alert('Failed to post');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const circles = ["Mental Wellness", "Period Care", "Pregnancy", "Nutrition"];
 
@@ -102,8 +133,13 @@ export default function CreatePost() {
           </div>
         </div>
 
-        <button className="btn-primary" style={{ width: '100%', justifyContent: 'center', height: '56px', borderRadius: '28px', fontSize: '16px', marginBottom: '32px' }}>
-          {isAnonymous ? 'Post Anonymously' : 'Post to Community'}
+        <button 
+          className="btn-primary" 
+          onClick={handlePost}
+          disabled={isSubmitting || !postText.trim()}
+          style={{ width: '100%', justifyContent: 'center', height: '56px', borderRadius: '28px', fontSize: '16px', marginBottom: '32px', opacity: (isSubmitting || !postText.trim()) ? 0.7 : 1 }}
+        >
+          {isSubmitting ? 'Posting...' : (isAnonymous ? 'Post Anonymously' : 'Post to Community')}
         </button>
 
         {/* Safe Environment Policy */}
@@ -112,7 +148,7 @@ export default function CreatePost() {
             <ShieldCheck size={16} /> Safe Environment Policy
           </div>
           <p style={{ fontSize: '11px', lineHeight: '1.5', maxWidth: '300px', margin: '0 auto' }}>
-            SheCare AI uses automated moderation to ensure a kind, supportive, and judgment-free space. Harassment or medical misinformation will be removed.
+            Swasthya uses automated moderation to ensure a kind, supportive, and judgment-free space. Harassment or medical misinformation will be removed.
           </p>
         </div>
       </div>

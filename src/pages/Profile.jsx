@@ -151,7 +151,7 @@ export default function Profile() {
 
       {/* Footer */}
       <div style={{ textAlign: 'center', color: 'var(--text-light)', fontSize: '12px', marginBottom: '40px', lineHeight: '1.6' }}>
-        SheCare AI Version 2.4.0 (Build 992)<br/>
+        Swasthya Version 2.4.0 (Build 992)<br/>
         Privacy Policy • Terms of Service
       </div>
 

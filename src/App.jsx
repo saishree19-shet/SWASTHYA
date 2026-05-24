@@ -18,6 +18,7 @@ import Community from './pages/Community';
 import CreatePost from './pages/CreatePost';
 import Login from './pages/Login';
 import Landing from './pages/Landing';
+import Chat from './pages/Chat';
 import { useAuth } from './context/AuthContext';
 
 function PrivateRoute({ children }) {
@@ -38,6 +39,7 @@ function App() {
             <AnimatePresence mode="wait">
               <Routes>
                 <Route path="/" element={<Landing />} />
+                <Route path="/chat" element={<PrivateRoute><Chat /></PrivateRoute>} />
                 <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
                 <Route path="/monitor" element={<PrivateRoute><Monitor /></PrivateRoute>} />
                 <Route path="/wellness" element={<PrivateRoute><Wellness /></PrivateRoute>} />
@@ -56,8 +58,10 @@ function App() {
           {/* Floating SOS Button (Shows on main tabs except emergency) */}
           <Routes>
             <Route path="/" element={null} />
+            <Route path="/chat" element={null} />
             <Route path="/emergency" element={null} />
             <Route path="/community/new" element={null} />
+            <Route path="/community" element={null} />
             <Route path="/doctors/:id" element={null} />
             <Route path="/login" element={null} />
             <Route path="*" element={
@@ -71,7 +75,11 @@ function App() {
           {/* Bottom Navigation */}
           <Routes>
             <Route path="/" element={null} />
+            <Route path="/chat" element={null} />
             <Route path="/login" element={null} />
+            <Route path="/community" element={null} />
+            <Route path="/doctors" element={null} />
+            <Route path="/monitor" element={null} />
             <Route path="*" element={
               <nav className="bottom-nav">
                 <NavLink to="/dashboard" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>

@@ -12,6 +12,9 @@ export const HealthProvider = ({ children }) => {
     heartRate: 75,
     spo2: 98,
     temperature: 36.5,
+    bloodPressure: { sys: 120, dia: 80 },
+    stressLevel: 30, // Percentage
+    respirationRate: 16, // Breaths per min
     fallDetected: false,
     history: []
   });
@@ -20,9 +23,13 @@ export const HealthProvider = ({ children }) => {
     // Simulate real-time ESP32 IoT sensor data every 3 seconds
     const interval = setInterval(() => {
       setHealthData(prev => {
-        const newHR = 65 + Math.floor(Math.random() * 46); // 65-110
-        const newSpO2 = 95 + Math.floor(Math.random() * 6); // 95-100
-        const newTemp = +(36.0 + (Math.random() * 2.0)).toFixed(1); // 36.0-38.0
+        const newHR = 65 + Math.floor(Math.random() * 20); // 65-85 normal resting
+        const newSpO2 = 96 + Math.floor(Math.random() * 4); // 96-100
+        const newTemp = +(36.4 + (Math.random() * 0.8)).toFixed(1); // 36.4-37.2
+        const sys = 110 + Math.floor(Math.random() * 15);
+        const dia = 70 + Math.floor(Math.random() * 10);
+        const newStress = 20 + Math.floor(Math.random() * 30);
+        const newResp = 14 + Math.floor(Math.random() * 6);
 
         const newReading = {
           time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
@@ -31,14 +38,16 @@ export const HealthProvider = ({ children }) => {
           temperature: newTemp
         };
 
-        // Keep last 10 readings for the chart
-        const updatedHistory = [...prev.history, newReading].slice(-10);
+        const updatedHistory = [...prev.history, newReading].slice(-12);
 
         return {
           ...prev,
           heartRate: newHR,
           spo2: newSpO2,
           temperature: newTemp,
+          bloodPressure: { sys, dia },
+          stressLevel: newStress,
+          respirationRate: newResp,
           history: updatedHistory
         };
       });

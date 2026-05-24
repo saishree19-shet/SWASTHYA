@@ -27,7 +27,7 @@ export default function Dashboard() {
       <header className="app-header">
         <div className="header-title">
           <img src={photoUrl} alt="Profile" className="avatar" referrerPolicy="no-referrer" />
-          SheCare AI
+          Swasthya
         </div>
         <button className="icon-btn">
           <Bell size={24} />
@@ -69,7 +69,7 @@ export default function Dashboard() {
           onClick={() => window.location.href = '/doctors'}
           style={{ flex: 1, background: 'white', border: '1px solid var(--primary-light)', padding: '12px', borderRadius: '16px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--primary)', fontWeight: 'bold', fontSize: '13px', boxShadow: 'var(--shadow-sm)', cursor: 'pointer' }}
         >
-          <span style={{ fontSize: '20px' }}>🩺</span> SheCare Connect
+          <span style={{ fontSize: '20px' }}>🩺</span> Swasthya Connect
         </button>
         <button 
           onClick={() => window.location.href = '/community'}

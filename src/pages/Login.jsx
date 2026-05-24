@@ -63,7 +63,7 @@ export default function Login() {
             <Activity className="logo-icon" size={32} />
           </div>
           <h1>{isSignUp ? 'Create Account' : 'Welcome Back'}</h1>
-          <p>{isSignUp ? 'Join SheCare AI today' : 'Your personal health companion'}</p>
+          <p>{isSignUp ? 'Join Swasthya today' : 'Your personal health companion'}</p>
         </div>
 
         {error && <div style={{ color: 'var(--danger)', background: 'var(--danger-light)', padding: '10px', borderRadius: '8px', marginBottom: '16px', fontSize: '14px', textAlign: 'center' }}>{error}</div>}
@@ -143,7 +143,7 @@ export default function Login() {
         </div>
 
         <div className="login-footer">
-          <p>{isSignUp ? 'Already have an account?' : 'New to SheCare?'} <button type="button" onClick={() => setIsSignUp(!isSignUp)} style={{ background: 'none', border: 'none', color: 'var(--primary)', fontWeight: 'bold', cursor: 'pointer', padding: 0 }}>{isSignUp ? 'Sign In' : 'Create an account'}</button></p>
+          <p>{isSignUp ? 'Already have an account?' : 'New to Swasthya?'} <button type="button" onClick={() => setIsSignUp(!isSignUp)} style={{ background: 'none', border: 'none', color: 'var(--primary)', fontWeight: 'bold', cursor: 'pointer', padding: 0 }}>{isSignUp ? 'Sign In' : 'Create an account'}</button></p>
         </div>
       </motion.div>
     </div>

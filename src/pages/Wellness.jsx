@@ -28,7 +28,7 @@ export default function Wellness() {
               <User size={20} />
             </div>
           )}
-          SheCare AI
+          Swasthya
         </div>
         <button className="icon-btn">
           <Bell size={24} />
