@@ -25,7 +25,7 @@ export default function Login() {
       } else {
         await login(identifier, password);
       }
-      navigate('/dashboard');
+      navigate('/monitor');
     } catch (err) {
       console.error(err);
       setError('Failed to ' + (isSignUp ? 'create account' : 'sign in') + ': ' + err.message);
@@ -38,7 +38,7 @@ export default function Login() {
       setError('');
       setLoading(true);
       await loginWithGoogle();
-      navigate('/dashboard');
+      navigate('/monitor');
     } catch (err) {
       console.error(err);
       setError('Failed to sign in with Google');

@@ -89,7 +89,7 @@ export default function Landing() {
             <Link to="/chat" onClick={() => setMenuOpen(false)}>Ask Swasthya</Link>
             <Link to="/community" onClick={() => setMenuOpen(false)}>Community Support</Link>
             <Link to="/doctors" onClick={() => setMenuOpen(false)}>Find a Doctor</Link>
-            <Link to="/dashboard" onClick={() => setMenuOpen(false)}>Track Your Mood</Link>
+            <Link to="/monitor" onClick={() => setMenuOpen(false)}>Track Your Mood</Link>
           </div>
 
           <div className="lp-nav-right">
@@ -319,7 +319,7 @@ export default function Landing() {
               <Link to="/chat">Ask Swasthya</Link>
               <Link to="/community">Community</Link>
               <Link to="/doctors">Find a Doctor</Link>
-              <Link to="/dashboard">Track Mood</Link>
+              <Link to="/monitor">Track Mood</Link>
             </div>
             <div className="lp-footer-col">
               <h4>Company</h4>
